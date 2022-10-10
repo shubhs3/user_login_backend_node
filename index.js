@@ -6,6 +6,7 @@ const port = process.env.APP_PORT;
 
 
 const userRouter = require("./api/user/user.router");
+const adminRouter = require("./api/admin/admin.router");
 
 const corsOptions ={
     origin:'*', 
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user" , userRouter);
+app.use("/api/admin" , adminRouter);
 
 
 

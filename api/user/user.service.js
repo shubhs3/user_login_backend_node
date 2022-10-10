@@ -56,26 +56,26 @@ module.exports = {
     )
   },
 
-  delete_timing_info: async (id) => {
-    return new Promise((resolve, reject) =>
-      con.query(
-        `DELETE FROM court_timings_details WHERE court_id=?`,
-        [id],
-        (err, results, fields) => {
-          if (err) {
-            console.log(err);
-            return resolve({
-              data: undefined,
-              err: err,
-            });
-          }
-          return resolve({
-            data: results,
-            err: undefined,
-          });
-        }
-      )
-    );
+  get_all_users: async () => {
+    return new Promise((resolve , reject) =>
+    con.query(
+      `SELECT user_id , fname , lname , email , mobile , address FROM user`,
+      [],
+      (err, results, fields) => {
+        if (err) {
+          return reject({
+            data: undefined,
+            err : err
+          })
+        }else{
+        return resolve({
+          data : results,
+          err : undefined
+        })
+      }
+      }
+    )
+    )
   },
 
 
